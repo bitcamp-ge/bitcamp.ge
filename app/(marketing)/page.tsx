@@ -46,32 +46,6 @@ export default async function IndexPage() {
 
   return (
     <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
-        <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <Link
-            href={siteConfig.links.discord}
-            className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
-            target="_blank"
-          >
-            შემოგვიერთდი Discord - ზე
-          </Link>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
-            დაიწყე სწავლა
-          </h1>
-          <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            BitCamp - სასწავლო პროგრამები, მენტორები, ლექციები, სუპერ
-            მეგობრული გარემო და ყველაზე დიდი საგანმანათლებლო საზოგადოება საქართველოში.
-          </p>
-          <div className="space-x-4">
-            <Link
-              href="/#programs"
-              className={cn(buttonVariants({ size: "lg" }))}
-            >
-              სასწავლო პროგრამები
-            </Link>
-          </div>
-        </div>
-      </section>
       <section
         id="programs"
         className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"

@@ -10,6 +10,6 @@ export const siteConfig: SiteConfig = {
     twitter: "https://twitter.com/otarza",
     github: "https://github.com/bitcamp.ge",
     facebook: "https://www.facebook.com/groups/bitcamp.ge",
-    discord: "https://discord.gg/TUua9xADrg",
+    discord: "https://discord.com/invite/7mZ3QsxqKq",
   },
 }

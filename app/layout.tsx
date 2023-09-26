@@ -2,14 +2,15 @@ import { Inter as FontSans } from "next/font/google"
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
+import Script from "next/script"
+
 import { siteConfig } from "@/config/site"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
+import FacebookPixel from "@/components/FacebookPixel"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import FacebookPixel from "@/components/FacebookPixel"
-import Script from "next/script"
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -102,6 +103,35 @@ export default function RootLayout({ children }: RootLayoutProps) {
           
             gtag('config', 'UA-168888380-1');
           `}
+        </Script>
+
+        <div id="fb-root"></div>
+        <div id="fb-customer-chat" className="fb-customerchat"></div>
+        <Script id="fb-chat-plugin">
+          {`
+            var chatbox = document.getElementById('fb-customer-chat');
+            chatbox.setAttribute("page_id", "108103453902596");
+            chatbox.setAttribute("attribution", "biz_inbox");
+          `}
+        </Script>
+
+        <Script id="fb-sdk">
+        {`
+          window.fbAsyncInit = function() {
+            FB.init({
+              xfbml            : true,
+              version          : 'v18.0'
+            });
+          };
+
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        `}
         </Script>
       </body>
     </html>

@@ -58,14 +58,15 @@ export const docsConfig: DocsConfig = {
           title: "საფასური",
           href: "/programs/about/pricing",
         },
+        {
+          title: "მენტორები",
+          href: "/mentors",
+        },
         // {
         //   title: "ლექტორები",
         //   href: "/programs/about/lecturers",
         // },
-        // {
-        //   title: "მენტორები",
-        //   href: "/programs/about/mentors",
-        // },
+
         // {
         //   title: "სწავლის დაწყება",
         //   href: "/programs/about/start",
@@ -137,6 +138,51 @@ export const docsConfig: DocsConfig = {
           title: "👾 BitCamp Kids",
           href: "/programs/kids",
         },
+      ],
+    },
+  ],
+
+  mentorsNav: [
+    {
+      title: "მენტორები",
+      items: [
+        {
+          title: "ბექა მაისურაძე",
+          href: "/mentors/beka-maisuradze",
+        },
+        {
+          title: "გიორგი ტარსაიძე",
+          href: "/mentors/giorgi-tarsaidze",
+        },
+        {
+          title: "ლაშა კაჭკაჭიშვილი",
+          href: "/mentors/lasha-kachkachishvili",
+        },
+        {
+          title: "ლაშა მეგრელიშვილი",
+          href: "/mentors/lasha-megrelishvili",
+        },
+        {
+          title: "ლევან იაკობიძე",
+          href: "/mentors/levan-iakobidze",
+        },
+        {
+          title: "ნიკოლოზ ყიფშიძე",
+          href: "/mentors/nika-kipshidze",
+        },
+        {
+          title: "სანდრო წამალაშვილი",
+          href: "/mentors/sandro-tsamalashvili",
+        },
+        {
+          title: "თედო ჯანელიძე",
+          href: "/mentors/tedo-janelidze",
+        },
+        {
+          title: "თემური ცუცქირიძე",
+          href: "/mentors/temuri-tsutskiridze",
+        },
+
       ],
     },
   ],

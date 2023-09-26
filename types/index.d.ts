@@ -56,6 +56,22 @@ export type Program = {
   }[]
 }
 
+export type Mentor = {
+  name: string
+  badge: string
+  description: string
+  url: string
+  icon: string
+  technologies: string[]
+  products: {
+    ProductId: number
+    title: string
+    price: string
+    description: string
+  }[]
+}
+
+
 export type Subject = {
   name: string
   badge: string
@@ -74,6 +90,7 @@ export type DocsConfig = {
   backendProgramsNav: SidebarNavItem[]
   fullstackProgramsNav: SidebarNavItem[]
   kidsProgramsNav: SidebarNavItem[]
+  mentorsNav: SidebarNavItem[]
 }
 
 export type MarketingConfig = {
