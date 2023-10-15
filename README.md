@@ -109,15 +109,15 @@ pnpm dev
 </Callout>
 ```
 
-*PinProtected* component uses first *Locked* tag as a message before it's unlocked and uses the second *Locked* tag as an content after the pin was correctly entered. *PinProtected* use case:
+*PinProtected* component uses first *Locked* tag as a message before it's unlocked and uses the second *Unlocked* tag as an content after the pin was correctly entered. *PinProtected* use case:
 ```html
 <PinCodeProtectedContent>
     <Locked>
         Please enter a pin
     </Locked>
-    <Locked>
+    <Unlocked>
         # Content
-    </Locked>
+    </Unlocked>
 </PinCodeProtectedContent>
 ```
 
