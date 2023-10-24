@@ -157,6 +157,11 @@ const components = {
       {...props}
     />
   ),
+  Unlocked: ({ className, ...props }) => (
+    <div
+      {...props}
+    />
+  ),
 }
 
 interface MdxProps {
