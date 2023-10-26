@@ -45,6 +45,12 @@ export const Course = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    date: {
+      type: "string",
+    },
+    author: {
+      type: "string",
+    },
     description: {
       type: "string",
     },
@@ -67,6 +73,9 @@ export const Program = defineDocumentType(() => ({
       required: true,
     },
     description: {
+      type: "string",
+    },
+    ogImage: {
       type: "string",
     },
     published: {
