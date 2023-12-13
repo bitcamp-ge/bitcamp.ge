@@ -256,16 +256,9 @@ export const docsConfig: DocsConfig = {
           title: "თავი 11",
           href: "/classes/javascript/2023f/week-11",
         },
-      ],
-    },
-  ],
-  frontEndBasics2023ClassNav: [
-    {
-      title: "Front-End Basics 2023F",
-      items: [
         {
-          title: "თავი 1",
-          href: "/classes/frontendbasics/2023f/week-1",
+          title: "თავი 12",
+          href: "/classes/javascript/2023f/week-12",
         },
       ],
     },

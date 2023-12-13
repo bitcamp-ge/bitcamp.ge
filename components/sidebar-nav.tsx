@@ -34,23 +34,22 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   ) : null
 }
 
+
 function getDynamicMenuItems(pathname: string | null): SidebarNavItem[] {
   let items: SidebarNavItem[] = []
-  if (pathname?.includes("javascript/2023f")) {
+  if (pathname?.includes('javascript/2023f')) {
     items = docsConfig.javasScript2023ClassNav
   }
-  if (pathname?.includes("frontendbasics/2023f")) {
-    items = docsConfig.frontEndBasics2023ClassNav
-  }
 
-  if (pathname?.includes("python/2023f")) {
+  if (pathname?.includes('python/2023f')) {
     items = docsConfig.python2023ClassNav
   }
-  if (pathname?.includes("react/2022w")) {
-    items = docsConfig.react2022ClassNav
+  if (pathname?.includes('react/2022w')) {
+    items = docsConfig.react2022ClassNav;
   }
-  return items
+  return items;
 }
+
 
 interface DocsSidebarNavItemsProps {
   items: SidebarNavItem[]
