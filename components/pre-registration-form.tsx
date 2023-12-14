@@ -32,7 +32,6 @@ export default function PreRegistrationForm({
   const [submitted, setSubmitted] = useState(false)
   const sendEmail = async (subjectName) => {
     try {
-      console.log("შევიდა try ")
       await fetch("/api/email", {
         method: "POST",
         headers: {
