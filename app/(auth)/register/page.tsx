@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { UserAuthForm } from "@/components/user-auth-form"
+import { UserSignUpForm } from "@/components/user-signup-form"
 
 export const metadata = {
   title: "Create an account",
@@ -34,7 +35,8 @@ export default function RegisterPage() {
               Enter your email below to create your account
             </p>
           </div>
-          <UserAuthForm />
+          {/* <UserAuthForm /> */}
+          <UserSignUpForm />
           <p className="px-8 text-center text-sm text-muted-foreground">
             By clicking continue, you agree to our{" "}
             <Link

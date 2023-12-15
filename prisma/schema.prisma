@@ -87,12 +87,21 @@ model Post {
 }
 
 model PreRegistartion {
-  id        String   @id @default(cuid())
-  firstName      String
-  lastName      String
-  email     String
-  mobile    String
-  source    String
-  createdAt DateTime @default(now())
-  message   String
+  id          String   @id @default(cuid())
+  firstName   String
+  lastName    String
+  email       String
+  mobile      String
+  source      String
+  createdAt   DateTime @default(now())
+  message     String
+}
+
+model NewUser {
+    id          String    @id @default(cuid())
+    email       String    @unique
+    username    String    @unique
+    password    String
+    createdAt   DateTime  @default(now()) @map(name: "created_at")
+    updatedAt   DateTime  @default(now()) @map(name: "updated_at")
 }

@@ -1,5 +1,7 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import { compare } from "bcrypt"
 import { NextAuthOptions } from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
 import EmailProvider from "next-auth/providers/email"
 import GitHubProvider from "next-auth/providers/github"
 import { Client } from "postmark"
@@ -65,6 +67,43 @@ export const authOptions: NextAuthOptions = {
 
         if (result.ErrorCode) {
           throw new Error(result.Message)
+        }
+      },
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+
+      credentials: {
+        email: {
+          label: "Email",
+          type: "email",
+          placeholder: "jsmith@example.com",
+        },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) return null
+
+        console.log("hello")
+        const existingUser = await db.newUser.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        })
+
+        if (!existingUser) return null
+
+        const passwordMatch = await compare(
+          credentials.password,
+          existingUser.password
+        )
+
+        if (!passwordMatch) return null
+
+        return {
+          id: existingUser.id,
+          username: existingUser.username,
+          email: existingUser.email,
         }
       },
     }),
