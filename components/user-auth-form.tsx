@@ -15,6 +15,9 @@ import { Label } from "@/components/ui/label"
 import { toast } from "@/components/ui/use-toast"
 import { Icons } from "@/components/icons"
 
+import ProgramDropdownSelector from "./program-dropdown-selector"
+import ServiceDropdownSelector from "./service-dropdown-selector"
+
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 type FormData = z.infer<typeof userAuthSchema>
@@ -29,6 +32,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
+  const [selectedProgram, setSelectedProgram] = React.useState(
+    localStorage.getItem("selectedProgram")
+  )
   const searchParams = useSearchParams()
 
   async function onSubmit(data: FormData) {
@@ -56,11 +62,20 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     })
   }
 
+  React.useEffect(() => {
+    selectedProgram && localStorage.setItem("selectedProgram", selectedProgram)
+  }, [selectedProgram])
+
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
+            <ProgramDropdownSelector
+              selectedProgram={selectedProgram}
+              onProgramSelect={setSelectedProgram}
+            />
+            <ServiceDropdownSelector />
             <Label className="sr-only" htmlFor="email">
               Email
             </Label>
