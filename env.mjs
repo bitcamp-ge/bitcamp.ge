@@ -21,7 +21,6 @@ export const env = createEnv({
     PAYZE_API_KEY: z.string().min(1),
     PAYZE_API_SECRET: z.string().min(1),
     MAINTENANCE_MODE: z.string().min(1),
-
   },
   client: {
     NEXT_PUBLIC_APP_URL: z.string().min(1),
