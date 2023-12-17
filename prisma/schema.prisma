@@ -62,6 +62,12 @@ model User {
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 
+  service       Services? @relation(fields: [serviceId], references: [id])
+  serviceId     String?  
+
+  program       Programs? @relation(fields: [programId], references: [id])
+  programId     String?
+
   @@map(name: "users")
 }
 
@@ -99,3 +105,17 @@ model PreRegistartion {
   message   String
 }
 
+model Services {
+  id    String   @id @default(cuid())
+  serviceName String
+  price String
+
+  users   User[]
+}
+
+model Programs {
+   id    String   @id @default(cuid())
+   programName String
+
+   users   User[]
+}
