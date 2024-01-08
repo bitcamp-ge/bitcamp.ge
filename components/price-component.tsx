@@ -1,6 +1,6 @@
 "use client"
 
-import React, { ReactNode, useState } from "react"
+import React, { ReactNode } from "react"
 import { CheckCircle2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -13,12 +13,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { pl } from "date-fns/locale"
 
-type PricingSwitchProps = {
-  onSwitch: (value: string) => void
-}
 
+import { ModalDrawer } from "./modal-drawer"
+import { UserAuthForm } from "./user-auth-form"
 type PricingCardProps = {
   isYearly?: boolean
   title: string
@@ -58,10 +57,8 @@ const PricingCard = ({
 }: PricingCardProps) => (
   <Card
     className={cn(
-      `flex w-full ${
-        title === "BitCamp Kids" || title === "PRO"
-      } flex-col justify-between py-1 ${
-        popular ? "border-rose-400" : "border-zinc-700"
+      `flex w-full ${title === "BitCamp Kids" || title === "PRO"
+      } flex-col justify-between py-1 ${popular ? "border-rose-400" : "border-zinc-700"
       } mx-auto sm:mx-0`,
       {
         "animate-background-shine bg-white dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] transition-colors":
@@ -71,9 +68,8 @@ const PricingCard = ({
   >
     <div>
       <CardHeader
-        className={`w-full ${
-          title === "BitCamp Kids" || title === "PRO" ? "pb-1" : "pb-8"
-        } pt-4`}
+        className={`w-full ${title === "BitCamp Kids" || title === "PRO" ? "pb-1" : "pb-8"
+          } pt-4`}
       >
         {isYearly && yearlyPrice && monthlyPrice ? (
           <div className="flex justify-between">
@@ -102,8 +98,8 @@ const PricingCard = ({
             {yearlyPrice && isYearly
               ? "₾" + yearlyPrice
               : monthlyPrice
-              ? "₾" + monthlyPrice
-              : "Custom"}
+                ? "₾" + monthlyPrice
+                : "Custom"}
           </h3>
           <span className="mb-1 flex flex-col justify-end text-sm">
             {yearlyPrice && isYearly ? "/year" : monthlyPrice ? "/თვეში" : null}
@@ -120,10 +116,12 @@ const PricingCard = ({
       </CardContent>
     </div>
     <CardFooter className="mt-2">
-      <Button className="relative inline-flex w-full items-center justify-center rounded-md bg-black px-6 font-medium text-white transition-colors  focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 dark:bg-white dark:text-black">
-        <div className="absolute -inset-0.5 -z-10 rounded-lg bg-gradient-to-b from-[#c7d2fe] to-[#8678f9] opacity-75 blur" />
-        {actionLabel}
-      </Button>
+
+    <ModalDrawer 
+      content={<UserAuthForm showAdditionalFields={true}/>} 
+      triggerButtonLabel="რეგისტრაცია"
+      
+    />
     </CardFooter>
   </Card>
 )
@@ -139,9 +137,14 @@ const CheckItem = ({ text }: { text: string | React.ReactNode }) => (
   </div>
 )
 
-export default function PricingCardComponent() {
+type PricingCardComponentProps = {
+  filter?: string[]
+}
+
+export default function PricingCardComponent({ filter }: PricingCardComponentProps) {
   const plans = [
     {
+      machine_name: "free",
       title: "უფასო",
       monthlyPrice: "0",
       yearlyPrice: "0",
@@ -150,6 +153,7 @@ export default function PricingCardComponent() {
       actionLabel: "ვრცლად",
     },
     {
+      machine_name: "common",
       title: "საერთო სამენტორო",
       monthlyPrice: 100,
       yearlyPrice: "?",
@@ -161,6 +165,7 @@ export default function PricingCardComponent() {
       actionLabel: "ვრცლად",
     },
     {
+      machine_name: "private",
       title: "პირადი მენტორი",
       monthlyPrice: 350,
       yearlyPrice: "?",
@@ -172,22 +177,22 @@ export default function PricingCardComponent() {
       actionLabel: "ვრცლად",
       popular: true,
     },
-    // {
-    //   title: "PRO",
-    //   monthlyPrice: 2000,
-    //   description: "PRO - სუპერ ინტენსიური პროგრამა",
-    //   features: [
-    //     "10 საათიანი სამენტორო მომსახურება მთელი დღის განმალვობაში",
-    //     "რეზიუმეს/CV - ს და სამოტივაციო წერილის მომზადებაში დახმარებ",
-    //     "რეალურ პროექტში ჩართვის შესაძლებლობა",
-    //     "საკუთარი სტარტაპის წამოწყების შესაძლებლობა",
-    //   ],
-    //   actionLabel: "ვრცლად",
-    //   exclusive: true,
-    // },
-  ]
-  const kidsPlan = [
     {
+      machine_name: "pro",
+      title: "PRO",
+      monthlyPrice: 2000,
+      description: "PRO - სუპერ ინტენსიური პროგრამა",
+      features: [
+        "10 საათიანი სამენტორო მომსახურება მთელი დღის განმალვობაში",
+        "რეზიუმეს/CV - ს და სამოტივაციო წერილის მომზადებაში დახმარებ",
+        "რეალურ პროექტში ჩართვის შესაძლებლობა",
+        "საკუთარი სტარტაპის წამოწყების შესაძლებლობა",
+      ],
+      actionLabel: "ვრცლად",
+      exclusive: true,
+    },
+    {
+      machine_name: "kids",
       title: "BitCamp Kids",
       monthlyPrice: "50",
       yearlyPrice: "0",
@@ -195,21 +200,67 @@ export default function PricingCardComponent() {
       features: ["გასაჯაროებული ლექციები JavaScript,React,Python "],
       actionLabel: "ვრცლად",
     },
-  ]
+  ];
+
+  const filteredPlans = filter?.map((machineName) => {
+    const plan = plans.find((p) => p.machine_name === machineName);
+    if (plan) {
+      return plan;
+    }
+    return null;
+  })
+
+
+  let sections: [any] = [{width: 'full', plans: []}];
+  let sectionIndex = 0;
+
+  if (filteredPlans){
+    for (let plan of filteredPlans) {
+      if (plan?.machine_name === 'pro' || plan?.machine_name === 'kids') {
+        sectionIndex++;
+        sections[sectionIndex] = {width: 'full', plans: [plan]};
+        sectionIndex++;
+      } else {
+        if(!sections[sectionIndex]) sections[sectionIndex] = {width: 'col', plans: []};
+        sections[sectionIndex].plans.push(plan);
+      }
+    }
+  }
+
+  const finalSections = sections.filter((section) => Object.keys(section).length > 0);
+
+  console.log(finalSections);
+
   return (
     <div className="py-8">
-      <PricingHeader
-        title="მომსახურებები და საფასური"
-        subtitle="აირჩიე სასურველი"
-      />
-      <section className="mt-8 flex flex-col gap-4  md:flex-row lg:flex-row ">
-        {plans.map((plan) => {
-          return <PricingCard key={plan.title} {...plan} />
-        })}
-        {/* {kidsPlan.map((plan) => {
-          return <PricingCard key={plan.title} {...plan} />
-        })} */}
-      </section>
+      <div className="mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]">
+        <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+          BitCamp - ის სერვისები
+        </h2>
+        <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+          შეარჩიე შენთვის კომფორტული მომსახურება და დაიწყე პროგრამირების სწავლა.
+        </p>
+      </div>
+
+      {finalSections.map((section) => {
+        return (
+          <section className="mt-8 flex flex-col gap-4  md:flex-row lg:flex-row ">
+            {section.plans.map((plan) => {
+              if (plan) {
+                return (
+                  <PricingCard
+                    key={plan.machine_name}
+                    {...plan}
+                  />
+                )
+              }
+              return null;
+            })}
+          </section>
+        )
+      })}
+
+
     </div>
   )
 }
