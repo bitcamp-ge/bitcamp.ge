@@ -80,28 +80,28 @@ export function UserAuthForm({ className, showAdditionalFields = true, ...props 
             <Input
               id="username"
               placeholder="username"
-              type="text"
+              type="hidden"
               autoCapitalize="none"
               autoCorrect="off"
-              disabled={isLoading || isGitHubLoading}
+              disabled
               {...register("username")}
             />
           </div>
-          {showAdditionalFields && (
-            <>
-              <div className="grid gap-1">
+
+          <div className="grid gap-1">
                 <Label className="sr-only" htmlFor="email">
-                  Email
+                  ელ.ფოსტა
                 </Label>
                 <Input
                   id="email"
-                  placeholder="name@example.com"
+                  placeholder="ელ.ფოსტის მისამართი"
                   type="email"
                   autoCapitalize="none"
                   autoComplete="email"
                   autoCorrect="off"
                   disabled={isLoading || isGitHubLoading}
                   {...register("email")}
+                  onChange={(e) => { setValue("username", e.target.value);}}
                 />
                 {errors?.email && (
                   <p className="px-1 text-xs text-red-600">
@@ -109,13 +109,57 @@ export function UserAuthForm({ className, showAdditionalFields = true, ...props 
                   </p>
                 )}
               </div>
+
+          {showAdditionalFields && (
+            <>
+            <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="first_name">
+                  სახელი
+                </Label>
+                <Input
+                  id="first_name"
+                  placeholder="თქვენი სახელი"
+                  type="text"
+                  autoCapitalize="none"
+                  autoComplete="first_name"
+                  autoCorrect="off"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("first_name")}
+                />
+                {errors?.first_name && (
+                  <p className="px-1 text-xs text-red-600">
+                    {errors.first_name.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-1">
+                <Label className="sr-only" htmlFor="last_name">
+                  გვარი
+                </Label>
+                <Input
+                  id="last_name"
+                  placeholder="თქვენი გვარი"
+                  type="text"
+                  autoCapitalize="none"
+                  autoComplete="last_name"
+                  autoCorrect="off"
+                  disabled={isLoading || isGitHubLoading}
+                  {...register("last_name")}
+                />
+                {errors?.last_name && (
+                  <p className="px-1 text-xs text-red-600">
+                    {errors.last_name.message}
+                  </p>
+                )}
+              </div>
+              
               <div className="grid gap-1">
                 <Label className="sr-only" htmlFor="phone_number">
-                  Phone Number
+                  ტელეფონი
                 </Label>
                 <Input
                   id="phone_number"
-                  placeholder="xxx xx xx xx"
+                  placeholder="ტელეფონის ნომერი"
                   type="text"
                   autoCapitalize="none"
                   autoCorrect="off"
@@ -127,11 +171,11 @@ export function UserAuthForm({ className, showAdditionalFields = true, ...props 
           )}
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="password">
-              Password
+              პაროლი
             </Label>
             <Input
               id="password"
-              placeholder="password"
+              placeholder="პაროლი"
               type="password"
               autoCapitalize="none"
               autoCorrect="off"

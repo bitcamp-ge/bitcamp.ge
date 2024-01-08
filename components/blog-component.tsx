@@ -1,4 +1,3 @@
-'use client';
 import Image from "next/image"
 import Link from "next/link"
 import { allPosts } from "contentlayer/generated"
@@ -9,28 +8,19 @@ import { formatDate } from "@/lib/utils"
 interface BlogComponentProps {
   columns: string,
   postsLimit?: number,
-  random?: boolean,
 }
 
 
-export default function BlogComponent({ columns, postsLimit = 0, random = false, ...props }: BlogComponentProps) {
+export default function BlogComponent({ columns, postsLimit = 0, ...props }: BlogComponentProps) {
   let posts = allPosts
     .filter((post) => post.published)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date))
     })
 
-  if (random) {
-    posts = posts.map(value => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value)
-  }
-
   if (postsLimit > 0) {
     posts = posts.slice(0, postsLimit);
   }
-
-
 
   return (
     <div>
