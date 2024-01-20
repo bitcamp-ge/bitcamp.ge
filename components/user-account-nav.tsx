@@ -2,7 +2,10 @@
 
 import Link from "next/link"
 import { User } from "next-auth"
-import { signOut } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
+
+import { useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 
 import {
   DropdownMenu,
@@ -18,6 +21,35 @@ interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
+  const { data: session } = useSession()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const code = searchParams.get("code")
+    if (code && session) {
+      sendCodeToBackend(code, session?.user.accessToken)
+    }
+  }, [session])
+
+  const sendCodeToBackend = async (code, token) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/connect-to-discord`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${token}`
+          },
+          body: JSON.stringify({ code }),
+        }
+      )
+      await response.json()
+    } catch (error) {
+      console.error("Error sending code to backend:", error)
+    }
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -40,6 +72,9 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href="/dashboard">ჩემი სივრცე</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="https://discord.com/api/oauth2/authorize?client_id=1173667963249897582&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&scope=identify+email">Discord-თან დაკავშირება</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
