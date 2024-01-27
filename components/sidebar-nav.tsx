@@ -4,8 +4,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { SidebarNavItem } from "types"
-import { cn } from "@/lib/utils"
 import { docsConfig } from "@/config/docs"
+import { cn } from "@/lib/utils"
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -39,6 +39,9 @@ function getDynamicMenuItems(pathname: string | null): SidebarNavItem[] {
   if (pathname?.includes("javascript/2023f")) {
     items = docsConfig.javasScript2023ClassNav
   }
+  if (pathname?.includes("javascript/2024w")) {
+    items = docsConfig.javasScript2024ClassNav
+  }
   if (pathname?.includes("frontendbasics/2023f")) {
     items = docsConfig.frontEndBasics2023ClassNav
   }
@@ -48,6 +51,9 @@ function getDynamicMenuItems(pathname: string | null): SidebarNavItem[] {
   }
   if (pathname?.includes("react/2022w")) {
     items = docsConfig.react2022ClassNav
+  }
+  if (pathname?.includes("python/2024w")) {
+    items = docsConfig.python2024ClassNav
   }
   return items
 }

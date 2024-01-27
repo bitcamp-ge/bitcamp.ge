@@ -267,6 +267,17 @@ export const docsConfig: DocsConfig = {
       ],
     },
   ],
+  javasScript2024ClassNav: [
+    {
+      title: "JavaScript 2024W",
+      items: [
+        {
+          title: "თავი 1",
+          href: "/classes/javascript/2024w/week-1",
+        },
+      ],
+    },
+  ],
   frontEndBasics2023ClassNav: [
     {
       title: "Front-End Basics 2023F",
@@ -290,6 +301,10 @@ export const docsConfig: DocsConfig = {
         {
           title: "თავი 5",
           href: "/classes/frontendbasics/2023f/week-5",
+        },
+        {
+          title: "თავი 6",
+          href: "/classes/frontendbasics/2023f/week-6",
         },
       ],
     },
@@ -361,6 +376,10 @@ export const docsConfig: DocsConfig = {
         {
           title: "თავი 16",
           href: "/classes/python/2023f/week-16",
+        },
+        {
+          title: "თავი 17",
+          href: "/classes/python/2023f/week-17",
         },
       ],
     },
@@ -448,6 +467,18 @@ export const docsConfig: DocsConfig = {
         {
           title: "თავი 20",
           href: "/classes/react/2022w/week-20",
+        },
+      ],
+    },
+  ],
+
+  python2024ClassNav: [
+    {
+      title: "Python 2024",
+      items: [
+        {
+          title: "თავი 1",
+          href: "/classes/python/2024w/week-1",
         },
       ],
     },

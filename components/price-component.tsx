@@ -59,15 +59,17 @@ const PricingHeader = ({
 const getFilterByIntent = (intent) => {
   switch (intent) {
     case "pro":
-      return ["pro", "private", "common", "kids"]
+      return ["pro", "private", "common", "minimal", "kids"]
     case "common":
-      return ["common", "private", "kids", "pro"]
+      return ["common", "private", "minimal", "kids", "pro"]
+    case "minimal":
+      return ["minimal", "private", "common", "kids", "pro"]
     case "private":
-      return ["private", "common", "kids", "pro"]
+      return ["private", "common", "minimal", "kids", "pro"]
     case "kids":
-      return ["kids", "common", "private", "pro"]
+      return ["kids", "common", "private", "minimal", "pro"]
     default:
-      return ["free", "common", "private", "kids", "pro"]
+      return ["free", "minimal", "common", "private", "kids", "pro"]
   }
 }
 
@@ -100,7 +102,7 @@ const PricingCard = ({
   }
 
   // In case it's popular
-  let borderColor = popular ? "border-rose-400" : "border-zinc-700";
+  let borderColor = popular ? "border-green-500 ring-4 ring-green-500" : "border-zinc-700";
   // In case it's for kids
   borderColor = machine_name === "kids" ? "border-violet-700" : borderColor;
 
@@ -254,12 +256,6 @@ export default function PricingCardComponent({ intent }: PricingCardComponentPro
 
     setFilter(getFilterByIntent(getIntent()));
   }, []);
-
-
-
-
-
-
 
   const filteredservices = filter?.map((machineName) => {
     const plan = services.find((p) => p.machine_name === machineName);
