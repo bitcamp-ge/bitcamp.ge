@@ -3,6 +3,10 @@ import { MarketingConfig } from "types"
 export const marketingConfig: MarketingConfig = {
   mainNav: [
     {
+      title: "Youtube უნივერსიტეტი",
+      href: "/youtubeUniversity",
+    },
+    {
       title: "პროგრამები",
       href: "/programs",
     },

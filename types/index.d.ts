@@ -41,6 +41,14 @@ export type SiteConfig = {
   }
 }
 
+export type YoutubeUniversity = {
+  name: string
+  badge: string
+  description: string
+  url: string
+  icon: string
+}
+
 export type Program = {
   name: string
   badge: string
@@ -81,6 +89,7 @@ export type Subject = {
 }
 
 export type DocsConfig = {
+  YoutubeUniversityNav: SidebarNavItem[]
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
   aboutProgramsNav: SidebarNavItem[]

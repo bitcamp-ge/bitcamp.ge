@@ -103,12 +103,12 @@ const ProgramCards = () => {
 export default async function DocPage({ params }: ProgramPageProps) {
   const program = await getProgramFromParams(params)
 
+
   if (!program) {
     notFound()
   }
 
   const toc = await getTableOfContents(program.body.raw)
-
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid">
       <div className="mx-auto w-full min-w-0">

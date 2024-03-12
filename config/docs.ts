@@ -149,6 +149,25 @@ export const docsConfig: DocsConfig = {
       ],
     },
   ],
+  YoutubeUniversityNav: [
+    {
+      title: "youtube უნივერსიტეტი",
+      items: [
+        {
+          title: "I სემესტრი",
+          href: "/youtubeUniversity/semester-1",
+        },
+        {
+          title: "II სემესტრი",
+          href: "/youtubeUniversity/semester-2",
+        },
+        {
+          title: "III სემესტრი",
+          href: "/youtubeUniversity/semester-3",
+        },
+      ],
+    },
+  ],
   mentorsNav: [
     {
       title: "მენტორები",
