@@ -4,7 +4,7 @@ export const youtubePrograms = {
       name: "cs50X",
       badge: "cs50x",
       description: "გაიარე CS50X-ის კურსი.",
-      url: "/youtubeUniversity/cs50x",
+      url: "/youtubeUniversity/semester-I/cs50x",
       icon: "cs50x",
     },
     {
@@ -18,7 +18,7 @@ export const youtubePrograms = {
       name: "JavaScript101",
       badge: "js101",
       description: "შეისწავლე JavaScript-ის საფუძვლები.",
-      url: "/youtubeUniversity/js101",
+      url: "/youtubeUniversity/javascript101",
       icon: "javascript",
     },
     {
@@ -49,7 +49,7 @@ export const youtubePrograms = {
       description: "შეისწავლე ტექნოლოგიები.",
       url: "/youtubeUniversity/t101",
       icon: "t",
-      technologies: [],
+      technologies: ['js'],
     },
   ],
   semesterII: [
