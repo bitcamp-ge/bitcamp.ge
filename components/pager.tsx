@@ -1,11 +1,17 @@
 import Link from "next/link"
-import { Course, Doc, Program, Mentor, Class, YoutubeUniversity } from "contentlayer/generated"
+import {
+  Class,
+  Course,
+  Doc,
+  Mentor,
+  Program,
+  YoutubeUniversity,
+} from "contentlayer/generated"
 
 import { docsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
-// import { YoutubeUniversity } from "@/types"
 
 interface DocsPagerProps {
   doc: Doc | Course | Program | Mentor | Class | YoutubeUniversity
@@ -42,7 +48,9 @@ export function DocsPager({ doc }: DocsPagerProps) {
   )
 }
 
-export function getPagerForDoc(doc: Doc | Course | Program | Mentor | Class | YoutubeUniversity) {
+export function getPagerForDoc(
+  doc: Doc | Course | Program | Mentor | Class | YoutubeUniversity
+) {
   const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null]
   const activeIndex = flattenedLinks.findIndex(
     (link) => doc.slug === link?.href
