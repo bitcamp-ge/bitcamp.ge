@@ -541,12 +541,13 @@ export const Icons = {
     <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
       <rect width="100" height="100" fill="white" />
       <text
-        x="0"
-        y="90"
+        x="50%"
+        y="60%"
         font-family="Arial, sans-serif"
         font-size="18"
         fill="black"
         fontWeight="bold"
+        textAnchor="middle"
       >
         Algorithms
       </text>
