@@ -119,11 +119,11 @@ const ProgramCards = () => {
         programs={youtubePrograms.semesterII}
       />
 
-      {/* <SemesterComponent
+      <SemesterComponent
         id="iii-სემესტრი"
         semesterName="III სემესტრი"
         programs={youtubePrograms.semesterIII}
-      /> */}
+      />
     </div>
   )
 }
