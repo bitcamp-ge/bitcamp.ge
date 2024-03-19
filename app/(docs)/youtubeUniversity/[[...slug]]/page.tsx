@@ -15,6 +15,8 @@ import { youtubePrograms } from "@/config/youtubePrograms"
 import { generateDefaultMetaData } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import Image from "next/image"
+import youtubeUniversityImage from "@/public/images/youtubeUniversity/main.png"
 
 interface ProgramPageProps {
   params: {
@@ -107,6 +109,8 @@ const SemesterComponent = ({ semesterName, programs, id }) => (
 const ProgramCards = () => {
   return (
     <div>
+      <Image src={youtubeUniversityImage} alt='youtube university picuture' />
+
       <SemesterComponent
         id="i-სემესტრი"
         semesterName="I სემესტრი"
